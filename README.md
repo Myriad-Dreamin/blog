@@ -49,7 +49,7 @@ Install suggseted extensions:
 
 ## Writing
 
-Create a new blog post in [`content/article`:](./content/article/)
+Create a new blog post in [`content/article`:](../content/article/)
 
 ```typ
 #import "/typ/templates/blog.typ": *
@@ -65,7 +65,7 @@ Create a new blog post in [`content/article`:](./content/article/)
 
 The `blog-tags` index is defined in [`content/article/blog-tags.typ`](./typ/templates/mod.typ#L14) to ensure type safety. You can add your own tags by adding a new `blog-tags` index.
 
-There is a sample blog post in [`content/article/personal-info.typ`](./content/article/personal-info.typ).
+There is a sample blog post in [`content/article/personal-info.typ`](../content/article/personal-info.typ).
 
 ## Deploying to GitHub Pages
 
