@@ -9,14 +9,13 @@ const openai = new OpenAI({
   apiKey: e.DEEPSEEK_API_KEY,
 });
 
-export const createCompletion = async (message) => {
+export const createCompletion = async (message, language = "Chinese") => {
   try {
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "system",
-          content:
-            "You are a knowledgeable translator that translate text in user documents sentence by sentence. Translate following Typst (A markup) to Chinese (only output same syntax) without extra wrapping. Please keep markup to avoid syntax error.",
+          content: `You are a knowledgeable translator that translate text in user documents sentence by sentence. Translate following Typst (A markup) to ${language} (only output same syntax) without extra wrapping. Please keep markup to avoid syntax error.`,
         },
         { role: "user", content: message },
       ],
@@ -42,7 +41,10 @@ if (!output) {
   process.exit(1);
 }
 
+const language = output.includes("/zh/") ? "Chinese" : "English";
+console.log(`Translating to ${language}...`);
+
 const fileContent = await fs.readFile(fileName, "utf-8");
-const translated = await createCompletion(fileContent);
+const translated = await createCompletion(fileContent, language);
 await fs.writeFile(output, translated, "utf-8");
 console.log(`Translation completed and saved to ${output}`);
