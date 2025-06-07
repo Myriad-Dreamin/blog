@@ -1,5 +1,6 @@
 import { OpenAI } from "openai";
 import { loadEnv } from "vite";
+import fs from "fs/promises";
 
 const e = loadEnv("production", process.cwd(), "");
 
@@ -15,7 +16,7 @@ export const createCompletion = async (message) => {
         {
           role: "system",
           content:
-            "You are a knowledgeable translator. Translate following HTML to Chinese (only output HTML) without extra wrapping.",
+            "You are a knowledgeable translator that translate text in user documents sentence by sentence. Translate following Typst (A markup) to Chinese (only output same syntax) without extra wrapping. Please keep markup to avoid syntax error.",
         },
         { role: "user", content: message },
       ],
@@ -29,9 +30,19 @@ export const createCompletion = async (message) => {
   }
 };
 
-console.log(
-  await createCompletion(
-    `<h1>Hello World</h1>
-<p>This is a test.</p>`
-  )
-);
+const fileName = process.argv[2];
+if (!fileName) {
+  console.error("Please provide a file name as an argument.");
+  process.exit(1);
+}
+
+const output = process.argv[3];
+if (!output) {
+  console.error("Please provide an output file name as an argument.");
+  process.exit(1);
+}
+
+const fileContent = await fs.readFile(fileName, "utf-8");
+const translated = await createCompletion(fileContent);
+await fs.writeFile(output, translated, "utf-8");
+console.log(`Translation completed and saved to ${output}`);
