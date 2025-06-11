@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "我的无后端博客搭建方案",
   desc: [通过 GitHub Pages 和 Cloudflare 配置博客。],
   date: "2025-05-21",

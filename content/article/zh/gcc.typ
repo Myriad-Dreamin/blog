@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "维护 GCC",
   desc: [一些全局维护 gcc 的有用命令。],
   date: "2025-05-12",

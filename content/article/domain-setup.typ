@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-en.with(
   title: "My Blog Setup without Backend",
   desc: [Configuring a blog via GitHub Pages and Cloudflare.],
   date: "2025-05-21",

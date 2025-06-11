@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "使用Caddy托管多个网站",
   desc: [为了在单台服务器上托管多个网站, 我尝试了nginx、caddy和traefik, 最终选择了caddy。],
   date: "2025-06-02T10:50:39+08:00",

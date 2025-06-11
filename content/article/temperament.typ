@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "Temperament",
   desc: [Some mathematics about temperament.],
   date: "2025-05-12",

@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-en.with(
   title: "Personal Information",
   desc: [This is a test post.],
   date: "2025-04-25",

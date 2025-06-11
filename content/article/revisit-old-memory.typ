@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "Revisiting Old Memory",
   desc: [Revisit the songs that I listened.],
   date: "2025-05-17",

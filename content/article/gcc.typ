@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-en.with(
   title: "Maintaining GCC",
   desc: [Some useful commands to maintain gcc globally.],
   date: "2025-05-12",

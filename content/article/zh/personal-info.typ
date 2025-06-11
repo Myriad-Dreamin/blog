@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "个人信息",
   desc: [这是一篇测试文章。],
   date: "2025-04-25",

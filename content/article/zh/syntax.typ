@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-zh.with(
   title: "Typst 语法",
   desc: [Typst 语法列表，用于渲染测试。],
   date: "2025-05-27",

@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-en.with(
   title: "Typst Syntax",
   desc: [List of Typst Syntax, for rendering tests.],
   date: "2025-05-27",
