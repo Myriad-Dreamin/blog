@@ -1,0 +1,87 @@
+---
+import type { LocaleInfo } from "./locale";
+
+interface Props {
+  articleId: string;
+  lang: string;
+  localeInfo: LocaleInfo;
+}
+
+const { articleId, lang, localeInfo } = Astro.props as Props;
+
+const urlOf = (base: string) =>
+  new URL(`${base}article/${articleId}/`, Astro.site).pathname;
+const zhCano: Record<string, string> = {
+  zh: "中文版本",
+  en: "英文版本",
+};
+const enCano: Record<string, string> = {
+  zh: "Chinese",
+  en: "English",
+};
+const cano = lang === "zh" ? zhCano : enCano;
+---
+
+<style>
+  .locale-message {
+    margin: 1em 0;
+    padding: 0.675em 1.25em;
+    background-color: rgb(from var(--blue) r g b / 30%);
+    border-radius: 0.2em;
+  }
+  .dark .locale-message {
+    background-color: rgb(from var(--blue) r g b / 20%);
+  }
+  .locale-message p {
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
+
+{
+  lang === "en" && lang != localeInfo.canonical && (
+    <div class="locale-message">
+      <p>
+        This article is translated from{" "}
+        <a href={urlOf("/")}>{cano[localeInfo.canonical]}</a>
+        by LLM.
+      </p>
+      <p>
+        Despite checked and polished the translation, some inaccuracies may be
+        included.
+      </p>
+    </div>
+  )
+}
+
+{
+  lang === "zh" && lang != localeInfo.canonical && (
+    <div class="locale-message">
+      <p>
+        该文章是由 LLM 从<a href={urlOf("")}>{cano[localeInfo.canonical]}</a>
+        翻译而来。
+      </p>
+      <p>尽管已经做了检查和润色，仍可能存在错翻之处。</p>
+    </div>
+  )
+}
+
+{
+  lang == localeInfo.canonical && (
+    <div class="locale-message">
+      {localeInfo.availables
+        .map((it) => [it, cano[it]])
+        .map(([candidate, content], index) => {
+          return (
+            <>
+              {index > 0 && <span> | </span>}
+              {candidate !== lang && (
+                <a href={urlOf(candidate + "/")}>{content}</a>
+              )}
+              {candidate === lang && <span>{content}</span>}
+            </>
+          );
+        })}
+    </div>
+  )
+}

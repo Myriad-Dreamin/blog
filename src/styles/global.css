@@ -14,6 +14,7 @@
   --accent: #d3006a;
   --accent-dark: #d30069b3;
   --black: #0f1219;
+  --blue: #5cb3cc;
 }
 
 :root.dark {

@@ -20,6 +20,8 @@ import {
   kEnableReaction,
   kCommentInfo,
 } from "$consts";
+import { formatLang, getPostLocaleInfo } from "$components/locale";
+import LocaleMessage from "$components/LocaleMessage.astro";
 
 interface IdExt {
   id: string;
@@ -27,6 +29,7 @@ interface IdExt {
 
 type Props = CollectionEntry<"blog">["data"] &
   (IdExt | { id: false }) & {
+    canonical?: string;
     breadcrumbs: string;
   };
 
@@ -39,6 +42,9 @@ const {
   tags,
   author,
   breadcrumbs,
+  canonical,
+  lang,
+  region,
   ...rest
 } = Astro.props;
 const stat: { like?: number; click?: number } =
@@ -48,11 +54,14 @@ const stat: { like?: number; click?: number } =
 const click = stat.click || 0;
 const like = stat.like || 0;
 const pdfArchives = await getCollection("archive");
+
+const htmlLang = formatLang(lang, region);
+const localeInfo = id && getPostLocaleInfo(id);
 ---
 
-<html lang="en">
+<html lang={htmlLang}>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} canonical={canonical} />
     <style is:global>
       main {
         width: calc(100% - 2em);
@@ -189,6 +198,15 @@ const pdfArchives = await getCollection("archive");
               }
             </div>
             <h1>{title}</h1>
+            {
+              localeInfo && (
+                <LocaleMessage
+                  articleId={id}
+                  lang={lang || "en"}
+                  localeInfo={localeInfo}
+                />
+              )
+            }
             {
               id && pdfArchives.length > 0 && (
                 <ArchiveRef
