@@ -3,7 +3,7 @@
 #show: main-zh.with(
   title: "Tinymist 2024 - 语言服务部分",
   desc: [关于 tinymist，一个 typst 的语言服务器的开发思考。],
-  date: "2025-05-23",
+  date: "2025-11-09",
   tags: (
     blog-tags.programming,
     blog-tags.tinymist,
@@ -116,9 +116,9 @@ let doc = typst::compile(&verse.snapshot());
 #[derive(clap::Parser)]
 pub struct ToolArgs {
   #[clap(flatten)]
-  compile: CompileOnceArgs;
+  compile: CompileOnceArgs,
   #[clap(flatten)]
-  extra: ToolExtraArgs;
+  extra: ToolExtraArgs,
 }
 ```
 

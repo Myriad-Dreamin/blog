@@ -1,6 +1,6 @@
 #import "/typ/templates/blog.typ": *
 
-#show: main.with(
+#show: main-en.with(
   title: "Tinymist 2024 - Language Server Part",
   desc: [Some thoughts on the development of tinymist, a language server for typst.],
   date: "2025-05-23",

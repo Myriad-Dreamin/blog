@@ -3,7 +3,7 @@
 #show: main-zh.with(
   title: "Tinymist 2024 - 语言服务器部分",
   desc: [关于 tinymist，一个 typst 的语言服务器的开发思考。],
-  date: "2025-11-09",
+  date: "2025-05-23",
   tags: (
     blog-tags.programming,
     blog-tags.tinymist,

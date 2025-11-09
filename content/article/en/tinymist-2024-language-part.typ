@@ -1,6 +1,6 @@
 #import "/typ/templates/blog.typ": *
 
-#show: main-zh.with(
+#show: main-en.with(
   title: "Tinymist 2024 - Language Service Part",
   desc: [Thoughts on the development of tinymist, a Typst language server.],
   date: "2025-11-09",
@@ -43,8 +43,6 @@ impl ServerState {
 The guiding principle for Tinymist's design is local mutability with shared (global) immutability, an approach I've found to be particularly well-suited for building reliable language servers.
 
 === Mutable Global State
-
-`ServerState` is mutable, meaning the server starts of all LSP requests sequentiallly. However, this does not imply full sequentialization. `ServerState` only quickly updates the global state based on the request and creates a snapshot (or lock) of part of the state before entering the time-consuming phase. Since snapshots can be safely shared among threads, by 2025, tinymist ensures that requests do not block each other, especially time-consuming requests not blocking latency-sensitive ones.
 
 The language server handles with a mutable `ServerState`. It starts to process all LSP requests sequentially, but this doesn't imply full sequentialization. `ServerState` quickly updates the global state based on a request and creates a snapshot (or lock) of the a smaller part of relevant state before any time-consuming work begins. Because these snapshots are thread-safe, Tinymist ensures that requests, especially latency-sensitive ones, are not blocked by longer-running operations.
 
@@ -118,9 +116,9 @@ To add custom command-line arguments, one can use clap flatten:
 #[derive(clap::Parser)]
 pub struct ToolArgs {
   #[clap(flatten)]
-  compile: CompileOnceArgs;
+  compile: CompileOnceArgs,
   #[clap(flatten)]
-  extra: ToolExtraArgs;
+  extra: ToolExtraArgs,
 }
 ```
 

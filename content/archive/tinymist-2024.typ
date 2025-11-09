@@ -15,5 +15,6 @@
   ),
   archive-indices: (
     articles.tinymist-2024-server-part,
+    articles.tinymist-2024-language-part,
   ),
 )

@@ -1,5 +1,5 @@
 #import "/typ/templates/blog.typ": *
-#show: main.with(
+#show: main-en.with(
   title: "Say Goodbye to Space Sniffer",
   desc: [I wrote a fast tool to replace space sniffer.],
   date: "2025-05-20",
