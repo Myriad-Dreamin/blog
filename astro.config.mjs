@@ -21,6 +21,8 @@ const EnvStr = (optional = true) =>
   envField.string({ context: "client", access: "public", optional });
 const MustEnvStr = (optional = false) => EnvStr(optional);
 
+const typstTarget = (path) => path.includes("/content/archive/") ? "svg" : "html";
+
 export default defineConfig({
   // Whether to prefetch links while hovering.
   // See: https://docs.astro.build/en/guides/prefetch/
@@ -52,11 +54,8 @@ export default defineConfig({
   integrations: [
     sitemap(),
     typst({
-      // Always builds HTML files
-      mode: {
-        default: "html",
-        detect: () => "html",
-      },
+      target: typstTarget,
+      htmlMode: "text",
     }),
     tylant({
       title: SITE_TITLE,
