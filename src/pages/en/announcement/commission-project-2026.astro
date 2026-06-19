@@ -1,0 +1,33 @@
+---
+import Layout from "$layouts/BlogPost.astro";
+// @ts-ignore
+import AnnounceContent from "../../../../content/other/commission-2026.en.typ?html&body";
+---
+
+<Layout
+  id={false}
+  lang="en"
+  title="2026 Commission Project"
+  description="2026 Commission Project"
+  breadcrumbs="Announcement"
+  is-home={false}
+  date={new Date("April 5 2026")}
+>
+  <style>
+    .locale-message {
+      margin: 1em 0;
+      padding: 0.675em 1.25em;
+      background-color: rgb(from var(--blue) r g b / 30%);
+      border-radius: 0.2em;
+    }
+  </style>
+  <fragment slot="prelude">
+    <div class="locale-message">
+      <p>
+        这篇公告有
+        <a href="../../../zh/announcement/commission-project-2026">中文</a> 版本.
+      </p>
+    </div>
+  </fragment>
+  <AnnounceContent />
+</Layout>

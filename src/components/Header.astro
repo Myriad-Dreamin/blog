@@ -26,6 +26,7 @@ const kLUrlBase = explicitLocale ? `${kUrlBase}/${explicitLocale}` : kUrlBase;
 
 const links: Record<string, string> = {
   Posts: `${kLUrlBase}/article/`,
+  // Announcement: `${kLUrlBase}/announcement/`,
   Archives: `${kLUrlBase}/archive/`,
   Comments: `${kLUrlBase}/comment/`,
   Friends: `${kUrlBase}/friend/`,
@@ -85,7 +86,7 @@ const links: Record<string, string> = {
         breadcrumbs && (
           <>
             <span>&nbsp;/&nbsp;</span>
-            {<a href={links[breadcrumbs]}>{breadcrumbs}</a>}
+            {<a href={links[breadcrumbs] ?? kUrlBase + "/"}>{breadcrumbs}</a>}
           </>
         )
       }

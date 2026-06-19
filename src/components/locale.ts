@@ -1,4 +1,3 @@
-import { kUrlBase } from "$consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 const blog = await getCollection("blog");
@@ -36,7 +35,7 @@ const localeInfo = new Map(
         return blogByLocale[locale || "en"].get(post.id)?.data || post.data;
       },
     } satisfies LocaleInfo,
-  ])
+  ]),
 );
 
 export function getPostLocaleInfo(id: string) {
