@@ -4,7 +4,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-  # At 0 minutes past the hour, every 6 hours
+  # At 0 minutes past the hour, every 3 hours
   schedule:
     - cron: "0 */3 * * *"
 
